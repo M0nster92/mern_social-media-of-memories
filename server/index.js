@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ limit : "30mb", extended: true}))
 app.use(cors());
 app.use('/posts', router);
 
-const CONNECTION_URL = "mongodb+srv://sami_92:sami_92@cluster0.dovo5.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const CONNECTION_URL = "mongodb+srv://sami_92:sami_92@cluster0.dovo5.mongodb.net/memory?retryWrites=true&w=majority";
 
 const PORT = process.env.PORT || 5000
 
