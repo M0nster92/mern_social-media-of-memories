@@ -23,6 +23,7 @@ const Form = ({ currentId, setCurrentId }) => {
     }, [post])
 
     const handleSubmit = (e) => {
+        console.log(postData);
         e.preventDefault();
 
         if(currentId){
@@ -30,10 +31,18 @@ const Form = ({ currentId, setCurrentId }) => {
         } else {
             dispatch(createPost(postData));
         }
+
+        clear();
     }
     
     const clear = () => {
+        setCurrentId(null);
 
+        setPostData({creator : '',
+        title : '',
+        message : '',
+        tags : '',
+        selectedFile : ''})
     }
  
     return (
@@ -43,7 +52,7 @@ const Form = ({ currentId, setCurrentId }) => {
             noValidate 
             className={classes.form}
             onSubmit={handleSubmit}>
-                <Typography variant="h6">Creating a Memory</Typography>
+                <Typography variant="h6">{currentId ? 'Editing a memory' : 'Creating a Memory'}</Typography>
                 <TextField 
                 name="creator" 
                 variant="outlined" 

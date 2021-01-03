@@ -23,10 +23,22 @@ export const createPost = (post) => async dispatch => {
 }
 
 export const updatePost = (id, post) => async dispatch => {
+    console.log(post);
     try {
-        const { data } = await api.updatePost;
+        const { data } = await api.updatePost(id, post);
 
-        dispatch({type: 'UPDATE', payload : data})
+        dispatch({type: 'UPDATE', payload : id})
+    } catch (error){
+        console.log(error);
+    }
+}
+
+export const deletePost = (id) => async dispatch => {
+    console.log("Delete action is triggering", id);
+    try {
+        await api.deletePost(id);
+
+        dispatch({ type: 'DELETE', payload : id})
     } catch (error){
         console.log(error);
     }
